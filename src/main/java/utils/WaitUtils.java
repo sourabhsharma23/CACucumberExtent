@@ -1,10 +1,12 @@
 package utils;
 
 import java.time.Duration;
+import java.util.NoSuchElementException;
 
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -75,6 +77,15 @@ public class WaitUtils {
     public static void waitForPageLoad(WebDriver driver, int timeoutInSeconds) {
         getWait(driver, timeoutInSeconds).until(webDriver -> 
             ((JavascriptExecutor) webDriver).executeScript("return document.readyState").equals("complete"));
+    }
+    public static WebElement waitForInteractable(WebDriver driver, WebElement element) {
+        return getWait(driver).until(driver1 -> {
+            try {
+                return (element.isDisplayed() && element.isEnabled()) ? element : null;
+            } catch (StaleElementReferenceException | NoSuchElementException e) {
+                return null;
+            }
+        });
     }
 	
 }
