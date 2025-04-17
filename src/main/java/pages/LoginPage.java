@@ -38,7 +38,8 @@ public class LoginPage {
 	    WebElement nameOfUser;
 
 	    public void enterUsername(String username) {
-	    	loginLink.click();
+	    	WebElement ele = WaitUtils.waitForVisibility(driver, loginLink);
+	    	ele.click();
 	        usernameField.sendKeys(username);
 	    }
 

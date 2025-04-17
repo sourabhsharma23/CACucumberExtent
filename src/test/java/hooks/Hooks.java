@@ -14,6 +14,7 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 import utils.DriverFactory;
 import utils.ExtentManager;
 import utils.ScreenshotUtils;
+import utils.WaitUtils;
 
 public class Hooks {
 
@@ -27,7 +28,7 @@ public class Hooks {
         driver = DriverFactory.getDriver();
         System.out.println("Browser launched.");
         driver.manage().window().maximize();
-        
+
        ExtentTest test = extent.createTest(scenario.getName());
        scenarioTest.set(test);
        

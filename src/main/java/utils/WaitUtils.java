@@ -4,6 +4,7 @@ import java.time.Duration;
 
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -64,6 +65,16 @@ public class WaitUtils {
 
     public static WebElement waitForClickability(WebDriver driver, By locator, int timeout) {
         return getWait(driver, timeout).until(ExpectedConditions.elementToBeClickable(locator));
+    }
+    
+    public static void waitForPageLoad(WebDriver driver) {
+        getWait(driver).until(webDriver -> 
+            ((JavascriptExecutor) webDriver).executeScript("return document.readyState").equals("complete"));
+    }
+
+    public static void waitForPageLoad(WebDriver driver, int timeoutInSeconds) {
+        getWait(driver, timeoutInSeconds).until(webDriver -> 
+            ((JavascriptExecutor) webDriver).executeScript("return document.readyState").equals("complete"));
     }
 	
 }

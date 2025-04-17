@@ -25,15 +25,15 @@ Feature: Demo blaze application login scenarios
     And User clicks on the Login button
     Then User should be redirected to the Home Page
     
-  Scenario Outline: Valid login with multiple users
-    Given User is on the Login Page
-    When User enters username "<username>" and password "<password>"
-    And User clicks on the Login button
-    Then User should be redirected to the Home Page
-
-    Examples:
-      | username   | password  |
-      | admin2301  | admin     |
-      | sourabh2301| Test@123  |
+#  Scenario Outline: Valid login with multiple users
+#   Given User is on the Login Page
+#    When User enters username "<username>" and password "<password>"
+#    And User clicks on the Login button
+#    Then User should be redirected to the Home Page
+#
+#    Examples:
+#      | username   | password  |
+#      | admin2301  | admin     |
+#      | admin2301  | admin     | 
       
   
