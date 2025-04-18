@@ -74,10 +74,12 @@ public class WaitUtils {
             ((JavascriptExecutor) webDriver).executeScript("return document.readyState").equals("complete"));
     }
 
+ // This wait is for page load timeout
     public static void waitForPageLoad(WebDriver driver, int timeoutInSeconds) {
         getWait(driver, timeoutInSeconds).until(webDriver -> 
             ((JavascriptExecutor) webDriver).executeScript("return document.readyState").equals("complete"));
     }
+    // This wait is for element to be interactable
     public static WebElement waitForInteractable(WebDriver driver, WebElement element) {
         return getWait(driver).until(driver1 -> {
             try {
